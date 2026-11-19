@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset — GTA-style Cover Art Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover editor controls">
+    <h1>Vice Sunset</h1>
+    <p class="tagline">Your photo, three panels, one sunset — a GTA-style cover in seconds. Everything runs on your machine; photos are never uploaded.</p>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <label class="file-btn">Add your photos
+        <input id="uploads" type="file" accept="image/*" multiple>
+      </label>
+      <p class="hint">Or start with the two samples below. Click a thumbnail to put it in the selected panel.</p>
+      <div id="photoStrip" class="photo-strip" aria-label="Photo library"></div>
+      <div class="row">
+        <button id="fillOne" type="button">Fill all panels with hero photo</button>
+        <button id="shuffle" type="button">Rotate panel photos</button>
+      </div>
+    </fieldset>
+
+    <fieldset id="panels" aria-label="Panel cropping">
+      <legend>2 · Crop each panel</legend>
+    </fieldset>
+    <p class="hint">Tip: drag the preview to pan the selected panel, scroll on it to zoom.</p>
+
+    <fieldset>
+      <legend>3 · Caption</legend>
+      <label>Title
+        <input id="title" type="text" maxlength="28" value="Sunset Heist">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="One last job in the city">
+      </label>
+      <label>Place tag
+        <input id="tag" type="text" maxlength="20" value="Sunset City">
+      </label>
+      <label>Title size
+        <input id="titleSize" type="range" min="0.7" max="1.4" step="0.05" value="1">
+      </label>
+      <label>Title colour
+        <input id="titleColor" type="color" value="#ffffff">
+      </label>
+      <label class="check"><input id="titleTop" type="checkbox"> Title at the top of the band</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Look</legend>
+      <div class="row" role="group" aria-label="Colour look">
+        <button type="button" data-look="sunset" class="active">Sunset</button>
+        <button type="button" data-look="neon">Neon</button>
+        <button type="button" data-look="nights">Vice Nights</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Size &amp; export</legend>
+      <div class="row" role="group" aria-label="Export size">
+        <button type="button" data-size="square" class="active">Square 1080×1080</button>
+        <button type="button" data-size="portrait">Portrait 1080×1350</button>
+        <button type="button" data-size="wide">Wide 1920×1080</button>
+      </div>
+      <div class="row">
+        <button type="button" data-export="square" class="export">Export square PNG</button>
+        <button type="button" data-export="portrait" class="export">Export portrait PNG</button>
+        <button type="button" data-export="wide" class="export">Export wide PNG</button>
+      </div>
+      <p id="status" role="status"></p>
+    </fieldset>
+    <p class="fineprint">Original design — no Rockstar logo, artwork or font. Display type: Anton &amp; Archivo Black (SIL Open Font License, vendored under app/fonts/). Sample photos were made for make.fun and are free to use.</p>
+  </section>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <p class="hint">Live preview — drag to pan, scroll to zoom the selected panel.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

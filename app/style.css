@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('./fonts/ArchivoBlack-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #14091f; color: #f5efe8; font: 15px/1.45 system-ui, -apple-system, sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 22px; }
+.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 14px; }
+.controls h1 {
+  margin: 0; font-family: 'Anton', 'Archivo Black', sans-serif; font-weight: 400;
+  font-size: 44px; letter-spacing: 1px; line-height: 1;
+  background: linear-gradient(90deg, #ffb347, #ff5e62 55%, #ff2fb3);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.tagline { margin: 0; color: #d8c8e8; }
+.hint { margin: 0; color: #b9a8c9; font-size: 13px; }
+.fineprint { margin: 0; color: #8d7a9e; font-size: 12px; }
+
+fieldset { border: 1px solid #4a2b63; border-radius: 10px; padding: 12px; margin: 0; background: rgba(255, 255, 255, 0.04); }
+legend { font-family: 'Archivo Black', sans-serif; font-size: 13px; color: #ffb347; padding: 0 6px; }
+label { display: flex; flex-direction: column; gap: 5px; font-weight: 600; margin-bottom: 8px; }
+label.check { flex-direction: row; align-items: center; gap: 8px; }
+input[type=text] { font: inherit; padding: 8px; border: 1px solid #6b4a86; border-radius: 6px; background: #241233; color: #fff; }
+input[type=range] { width: 100%; accent-color: #ff5e62; }
+input[type=color] { width: 56px; height: 34px; padding: 2px; border: 1px solid #6b4a86; border-radius: 6px; background: #241233; }
+input[type=file] { display: none; }
+.file-btn {
+  display: block; text-align: center; font-weight: 700; padding: 10px; border-radius: 8px;
+  background: linear-gradient(90deg, #ff7b00, #ff2fb3); color: #fff; cursor: pointer; margin-bottom: 8px;
+}
+button {
+  font: inherit; font-weight: 700; padding: 9px 10px; border: 1px solid #6b4a86; border-radius: 8px;
+  background: #2a1840; color: #f5efe8; cursor: pointer;
+}
+button:hover { border-color: #ff5e62; }
+button.active { background: #ff5e62; border-color: #ff5e62; color: #fff; }
+button.export { background: #ff7b00; border-color: #ff7b00; color: #fff; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.row button { flex: 1 1 auto; }
+
+.photo-strip { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; }
+.thumb { display: flex; flex-direction: column; gap: 3px; padding: 4px; width: 84px; }
+.thumb img { width: 100%; height: 56px; object-fit: cover; border-radius: 4px; display: block; }
+.thumb span { font-size: 11px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.panel-card { border: 1px solid #4a2b63; border-radius: 8px; padding: 10px; margin-bottom: 8px; cursor: pointer; background: rgba(255, 255, 255, 0.03); }
+.panel-card.selected { border-color: #ff5e62; background: rgba(255, 94, 98, 0.12); }
+.panel-head { font-family: 'Archivo Black', sans-serif; font-size: 12px; color: #ffb347; margin-bottom: 6px; }
+.panel-card select { width: 100%; font: inherit; padding: 6px; margin-bottom: 6px; border-radius: 6px; background: #241233; color: #fff; border: 1px solid #6b4a86; }
+.slider-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-weight: 600; }
+.slider-row span { flex: none; width: 76px; font-size: 13px; }
+.slider-row input { flex: 1; }
+
+.preview { position: sticky; top: 22px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+#cover { width: min(62vh, 58vw); height: auto; max-height: 82vh; box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); border-radius: 4px; cursor: grab; touch-action: none; }
+#cover:active { cursor: grabbing; }
+#status { margin: 0; color: #8be89b; min-height: 1.2em; }
+
+body.shot-cover .controls, body.shot-cover .preview .hint { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .preview { position: static; }
+body.shot-cover #cover { width: 100vw; height: 100vh; max-height: none; object-fit: contain; box-shadow: none; border-radius: 0; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; align-items: center; }
+  .controls { width: min(94vw, 480px); }
+  #cover { width: min(94vw, 640px); }
+}
